@@ -98,7 +98,7 @@ while numbers.count > 0 {
 
 // What's left in the array?
 numbers
-
+print("==================")
 /*:
  ## Implementation
  With your understanding of the algorithm you've discussed, and the tools above, work to implement your algorithm using code.
@@ -112,4 +112,43 @@ numbers
  */
 
 // Begin your implementation below...
+
+var deck : [Int] = []
+var sortedDeck : [Int] = []
+
+for _ in 1...13
+{
+    deck.append( random(between: 1, and: 50))
+}
+
+
+// set lowest value to highest expected value, then find lowest
+var lowest = 50
+var lowestIndex = deck.count
+var i = 0
+while deck.count > 0
+{
+    lowest = 50
+    lowestIndex = deck.count
+    i = 0
+    //find the lowest number in the unsorted list
+    while i < deck.count
+    {
+        if lowest > deck[i]
+        {
+            lowest = deck[i]
+            lowestIndex = i
+        }
+        i += 1
+    }
+    
+    // add the lowest value to the sorted list, then remove that value from the unsorted list
+    sortedDeck.append(lowest)
+    deck.remove(at: lowestIndex)
+}
+
+print("The sorted deck is \(sortedDeck)")
+
+
+
 
